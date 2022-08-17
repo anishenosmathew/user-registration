@@ -1,0 +1,109 @@
+<div class="container">
+    <header class="header">
+      <div class="logo"></div>
+      <div class="user"></div>
+    </header>
+    <div class="registration">
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Registration">
+   
+          <div class="signIn">
+            <div class="signInLabel">Sign In</div>
+            <form class="registration-form" [formGroup]="registrationForm" (ngSubmit)="register()">
+              <button *ngIf="showAddBtn" mat-raised-button color="primary" type="submit" class="register">Register User</button>
+              <label class="label">User Name:</label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput formControlName="userName" placeholder="Enter user name">
+              </mat-form-field>
+   
+              <label class="label">Email:</label>
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput formControlName="email" placeholder="Enter email">
+                <mat-error *ngIf="f.email.hasError('email')">
+                  Email is not valid
+                </mat-error>
+              </mat-form-field>
+   
+                <label class="label">Addresses:</label>
+                <table>
+                  <tr>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Pin Code</th>
+                    <th>Action</th>
+                  </tr>
+                  <ng-container *ngFor="let addressGroup of registrationForm.get('address')['controls'];let i = index"
+                    [formGroup]="addressGroup">
+                    <tr *ngIf="!addressGroup.value.isEdit">
+                      <td>{{addressGroup.value.city}}</td>
+                      <td>{{addressGroup.value.state}}</td>
+                      <td>{{addressGroup.value.pinCode}}</td>
+                      <td><span *ngIf="i != 0" class="cross" (click)="removeAddress(i)">X</span></td>
+                    </tr>
+   
+                    <div *ngIf="addressGroup.value.isEdit" class="addAddressSection">
+                      <label class="label">City:</label>
+                      <mat-form-field class="full-width" appearance="outline">
+                        <input matInput formControlName="city" placeholder="Enter city">
+                      </mat-form-field>
+   
+                      <label class="label">State:</label>
+                      <mat-form-field class="full-width" appearance="outline">
+                        <input matInput formControlName="state" placeholder="Enter state">
+                      </mat-form-field>
+   
+                      <label class="label">Pin code:</label>
+                      <mat-form-field class="full-width" appearance="outline">
+                        <input matInput formControlName="pinCode" placeholder="Enter pin code">
+                      </mat-form-field>
+   
+                      <div class="buttonGroupAddress">
+                        <span mat-button class="cancel" (click)="cancel(i)">Cancel</span>
+                        <button mat-raised-button color="primary" type="button" class="addAddress"
+                          (click)="saveAddress(i)">Save Address</button>
+                      </div>
+                    </div>
+                  </ng-container>
+                </table>
+   
+                <div *ngIf="showAddBtn" class="buttonGroup">
+                  <button  mat-raised-button color="primary" type="button" class="addAddress"
+                    (click)="addAddress()">Add Address</button>
+                </div>
+            </form>
+          </div>
+        </mat-tab>
+   
+        <mat-tab label="User Details">
+          <div class="userDetails" *ngIf="users?.length">
+            <label class="registrationLabel">Registered Users</label>
+            <table>
+              <tr>
+                <th>User name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+              <tr *ngFor="let user of users; let index = index">
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                  <div *ngFor="let address of user.address">
+                    {{address.city}}, {{address.state}}, {{address.pinCode}}
+                  </div>
+                </td>
+                <td><span class="cross" (click)="removeUser(index)">X</span></td>
+              </tr>
+            </table>
+          </div>
+          <em *ngIf="!users?.length">No users found</em>
+        </mat-tab>
+   
+      </mat-tab-group>
+    </div>
+    <footer class="footer">
+     <div class="copyright">@Copyrights</div>
+     <div class="date">August 2022</div>
+    </footer>
+  </div>
+   

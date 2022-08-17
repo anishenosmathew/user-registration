@@ -1,0 +1,149 @@
+.container {
+	margin: 0;
+	width: 100%;
+	max-width: 100%;
+
+	.header {
+		height: 70px;
+		border-bottom: solid 2px #b4b4b4;
+		position: relative;
+
+		.logo {
+			background: url("/assets/logo.PNG") no-repeat;
+			width: 126px;
+			height: 54px;
+			position: absolute;
+			margin-top: 6px;
+			left: 0;
+			top: 0;
+		}
+
+		.user {
+			background: url("/assets/user.PNG") no-repeat;
+			width: 78px;
+			height: 65px;
+			float: right;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+
+	.registration {
+		padding-left: 140px;
+		padding-top: 21px;
+		width: 641px;
+
+		.signIn,
+		.userDetails {
+			width: 500px;
+			position: relative;
+
+			.signInLabel {
+				border-bottom: solid 1px #b4b4b4;
+				margin: 12px 0 20px 0;
+				padding-bottom: 12px;
+			}
+
+			.registrationLabel {
+				border-bottom: solid 1px #b4b4b4;
+				margin: 12px 0 20px 0;
+				width: 100%;
+			}
+
+			.label {
+				font-size: 14px;
+				padding-left: 4px;
+				font-weight: bold;
+			}
+
+			.registration-form {
+				min-width: 150px;
+				max-width: 500px;
+				width: 100%;
+
+				.full-width {
+					width: 100%;
+					display: block;
+				}
+			}
+
+			.register {
+				position: absolute;
+				top: -4px;
+				right: 0;
+			}
+
+			table {
+				margin: 6px 0 20px 0;
+				width: 100%;
+
+				tr,
+				th,
+				td {
+					border: solid 1px;
+					padding: 4px;
+				}
+
+				.cross {
+					color: red;
+					width: 6px;
+					height: 6px;
+					font-weight: bold;
+					padding: 4px;
+					cursor: pointer;
+				}
+
+				.addAddressSection {
+					margin-bottom: 100px;
+				}
+			}
+
+			.buttonGroupAddress {
+				width: 200px;
+				float: right;
+
+				.cancel {
+					padding: 9px;
+					line-height: 17px;
+					display: inline-block;
+					cursor: pointer;
+				}
+
+				button {
+					float: right;
+				}
+
+			}
+
+			em {
+				padding-top: 12px;
+			}
+
+		}
+	}
+
+	.footer {
+		height: 60px;
+		border-top: solid 1px #b4b4b4;
+		position: fixed;
+		bottom: 0;
+		margin: 0;
+		width: 100%;
+		max-width: 98%;
+		background: #fff;
+		z-index: 10;
+
+		.copyright {
+			float: left;
+			line-height: 45px;
+			font-size: 14px;
+		}
+
+		.date {
+			float: right;
+			line-height: 45px;
+			font-size: 14px;
+		}
+	}
+}
